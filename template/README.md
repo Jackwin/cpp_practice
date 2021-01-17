@@ -2,15 +2,47 @@
 
 Ref: [CppTemplateTutorial](https://github.com/wuye9036/CppTemplateTutorial)
 
+## 常见的替换方法
+1. 宏定义，问题不知道类型
+    ```C++
+    #define Comp(a, b) (a < b ? a : b)
+   ```
+2. 重载： 需要多种重载版本，不支持新的类型
+3. 模板：支持新类型。
+    ```C++
+    //函数模板
+    template <typename T> T Comp (T a, T b){
+        return (a < b ? a : b);
+    } 
+
+    // Compiling genearation 模板函数
+    int Comp (int a, int b){
+        return (a < b ? a : b);
+    ```
+    - 编译的过程是先找函数，再找模板特化，再找模板；编译完成后没有模板，模板变成了函数
+    - 如果没调用函数模板，那么模板不参与编译；如果是以函数编写，即使不调用，编译的时候也会生成，占用一定的内存空间
 
 ## 模板使用的问题
 1. 模板的参数虽然是变化的，但在编译器件是确定的，因此在编译之前需要确保模板参数是确定的
 
 ## Template
+1. 模板适用的场景是处理的数据类型不同，但实现的功能（业务逻辑）相同
+2. 模板分为函数模板和类模板
+    - 类模板： 主要用于数据存储（容器），实现的算法不受数据类型的影响
+    - 类模板的成员函数都是函数模板
+3. 如果一个函数使用类模板参数，那么该函数一定是函数模板,函数的实参是模板实例化的模板类对象
+    ```C++
+    template <typename T> class Array;
+    template <typename T> T Foo(Array<T>& a) {}
+
+    Array<float> FloatArray(2);
+    Foo(FloatArray)
+
+    ```
 
 Template Class 声明
 ```c++
-//statement
+//statement typename T 是类型参数
 template <typename T> class ClassAnimal;
 // definition
 template <typename T> class ClassAnimal {

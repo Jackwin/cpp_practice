@@ -21,6 +21,25 @@ public:
 	static int const ID = 0x1235;
 };
 
+// 类模板练习
+// 实现的功能数据顺序进入，顺序读出
+
+template <typename T> class Array {
+	public:
+		Array(int s);
+		virtual ~Array();
+		T& Entry(int index);
+		Enter(T& value, int index);
+	// protected 变量在构造函数中赋值
+	protected:
+		int size;
+		T* element;
+};
+
+template <typename T> Array<T>::Array(int s) {
+
+}
+
 
 
 
