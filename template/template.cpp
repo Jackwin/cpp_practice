@@ -37,9 +37,20 @@ template <typename T> class Array {
 };
 
 template <typename T> Array<T>::Array(int s) {
+	size = s;
+	element = new (size);
 
 }
 
+template <typename T> Array<T>::~Array();
+
+template <typename T> Array<T>::T& Entry(int index) {
+	operator delete[] | element;
+}
+
+template <typename T> Array<T>::Enter(T& value, int index) {
+
+}
 
 
 
