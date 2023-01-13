@@ -38,6 +38,33 @@ class Box {
 
 ### virtual
 
+### explicit
+
+一般用在构造函数之前，防止构造函数的形参转换为该类类型。
+在C++类的实例化过程中，当使用单个实参调用的构造函数存在隐式转换，默认从实参类型转换为形参类型
+
+```C++
+class String {  
+piublic:
+    String (int n);
+    String(const char *p)
+};
+```
+C++实例化是，` String string1 = a`;  字符自动默认转换为int类型，编译不报错。但如果在String的构造函数前加上explicit后，再执行String实例化，会报错
+
+
+```C++
+class String {  
+piublic:
+    explicit String (int n);
+    String(const char *p)
+};
+```
+
+### override
+
+在派生类的虚函数声明中使用了override描述符，该函数必须重载基类的同名函数，否则编译出错。override目的是让编译器检查是否重写了虚函数
+
 
 ## 函数
 - 构造函数是特殊的成员函数
@@ -167,7 +194,7 @@ virtual double getValue() = 0
 
 ```
 
->一个具有春旭函数的基类称之为抽象类
+>一个具有纯虚函数的基类称之为抽象类
 >抽象类不能被实例化，但可以声明抽象类的指针或者引用。所以用来定义规范
 >
 ```
