@@ -1,26 +1,22 @@
-#include <iostream>
-#include <future>
 #include <chrono>
+#include <future>
+#include <iostream>
 #include <string>
 #include <thread>
 
 void ping(std::promise<std::string> &p) {
-
   std::this_thread::sleep_for(std::chrono::seconds(1));
   std::string str = "Ping";
   std::cout << str << std::endl;
   p.set_value(str);
 }
 
-
 void pong(std::future<std::string> &f) {
   auto value = f.get();
-  if (value == "Ping")
-    std::cout << "Pong" << std::endl;
+  if (value == "Ping") std::cout << "Pong" << std::endl;
 }
 
 int main() {
-
   std::promise<std::string> p1;
   std::future<std::string> f1 = p1.get_future();
 

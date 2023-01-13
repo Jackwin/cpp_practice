@@ -101,6 +101,30 @@ void foo1 {
 
 ```
 
+## 可变参数模板/函数
+
+C++ 11 开始，模板允许有0个或者多个模板参数，可变模板参数的表示使用 `...`
+在下文中,`... args`组成了可变模板参数
+
+```C++
+template<typename... T> class MyTemplate;
+
+MyTemplate<int, float, std::vector<int>> my_temp_instance;
+
+MyTemplate<> my_temp_instance2;
+```
+
+省略号的使用
+1. 放在形参的左边，如上述的模板可变参数，表示声明了一个参数包(parameter pack)，可以绑定0个或者多个模板参数
+
+
+函数中也可以使用可变参数，比较典型的应用是打印函数
+```C++
+void func(const T& t, const Args&... args);
+```
+
+`sizeof...()`用于获得模板参数包或者函数参数包的参数个数
+
 ## 元编程
 
 元编程有种“隔山打虎的意思”，打的是山，实际目标是虎，打山的过程是元编程，起到打老虎的作用是元程序。
