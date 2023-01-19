@@ -30,3 +30,6 @@
 13. erase(iterator first, iterator last) 删除
 14. clear() 清空
 15. front() 访问第一个元素 
+16. back() 访问尾部元素
+17. at(int i) 访问第i个元素，会判断是否越界；deque[i] 访问第i个元素，不判断是否越界
+18. begin() 首部迭代器指针  end()尾部迭代器指针 
