@@ -95,5 +95,12 @@ int main() {
   else
     std::cout << "Not found." << std::endl;
 
+  date today;
+  today.time_str = "2023-12-24";
+  std::cout << "Today is " << today.StringToTimeStamp() << std::endl;
+
+  // std::shared_ptr<std::unordered_map<int, std::string>> basket_ptr =
+  //    std::make_shared<std::unordered_map<int, std::string>>(1, "apple");
+
   return 0;
 }
