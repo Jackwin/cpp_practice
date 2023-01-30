@@ -15,6 +15,18 @@
 #define MY_ASSERT_GE(x, y, ...) _MY_ASSERT_COM(x, >=, y, __VA_ARGS__)
 #define MY_ASSERT_GT(x, y, ...) _MY_ASSERT_COM(x, >, y, __VA_ARGS__)
 
+#define PRINT(FORMAT, VALUE) \
+  printf("The value of" #VALUE " is " FORMAT "\n", VALUE)
+
+#define APPLE_PRICE 3
+#define BANANA_PRICE 4
+#define PRINT_VALUE(PREFIX, FORMAT) \
+  printf("The price is " FORMAT "\n", PREFIX##_PRICE)
+
+#define TO_STRING(x) #x
+
+//#define PRINT_HELLO(type_prefix, data) type_prefix
+
 #define PROFILE_CPU(name, code_block) \
   do {                                \
     code_block;                       \
@@ -77,6 +89,14 @@ int main() {
 
   MY_TIMER(
       "my timer", { usleep(1000); }, cpu_clock);
+
+  int x = 9;
+  PRINT("%d", x + 2);
+
+  std::cout << "The string is " << TO_STRING(1224) << std::endl;
+
+  PRINT_VALUE(APPLE, "%d");
+  PRINT_VALUE(BANANA, "%d");
 
   return 0;
 }
