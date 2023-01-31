@@ -16,10 +16,12 @@ int main() {
   CoffeeMachine coffee_machine;
   coffee_machine.operator_name = "Jack";
   coffee_machine.coffee_type = "Latte";
+
+  Coffee latte(2, 5);
   coffee_machine.func = make_coffee;
-  coffee_machine.func(&coffee_machine);
+  coffee_machine.func(coffee_machine, latte);
   coffee_machine.func = warm_milk;
-  coffee_machine.func(&coffee_machine);
+  coffee_machine.func(coffee_machine, latte);
 
   // Construct the structure with parameters
   /*
